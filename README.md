@@ -4,19 +4,6 @@ This repository contains the projects completed during the 4-week Python Interns
 
 ---
 
-## 📂 Project Structure
-
-OIBSIP/
-│
-├── index.py
-├── requirements.txt
-│
-├── Voice_Assistant/
-├── BMI_Calculator/
-├── Password_Generator/
-
----
-
 ## 📌 Projects Included
 
 ### 1️⃣ Voice Assistant
