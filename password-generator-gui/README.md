@@ -1,26 +1,43 @@
-# 🔐 Advanced Password Generator (GUI)
+# 🔐 Advanced Password Generator (Python Tkinter)
 
-## 📌 Project Overview
-A professional GUI-based Password Generator built using Python Tkinter.
-The application allows users to generate secure passwords with customizable length and character options.
+## 📌 Project Description
 
-## 🚀 Features
-- Adjustable password length
-- Include numbers option
-- Include symbols option
-- Copy to clipboard feature
-- Clean and modern interface
+The **Advanced Password Generator** is a simple desktop application built using **Python and Tkinter**.
+It allows users to generate secure passwords by selecting the desired length and choosing whether to include numbers and symbols.
+
+The application provides an easy-to-use graphical interface with colorful and professional design elements.
+
+---
+
+## ✨ Features
+
+* Generate strong random passwords
+* Select password length (4 – 32 characters)
+* Option to include numbers
+* Option to include special symbols
+* Copy generated password to clipboard
+* User-friendly graphical interface
+* Hover effects on buttons
+
+---
 
 ## 🛠 Technologies Used
-- Python
-- Tkinter
-- Random module
-- String module
 
-## ▶️ How to Run
-1. Ensure Python is installed.
-2. Run:
-   python main.py
+* **Python**
+* **Tkinter (GUI Library)**
+* **Random Module**
+* **String Module**
 
-## 🎯 Internship Project - Oasis Infobyte
-Completed as part of 4-week Python Internship Program.
+---
+
+## 📷 Screenshot
+
+<img width="1579" height="816" alt="Password Generator" src="https://github.com/user-attachments/assets/a58345b9-8909-4e48-9e45-ff03f3710325" />
+<img width="452" height="548" alt="Screenshot (4)" src="https://github.com/user-attachments/assets/ac8bc3e7-4e31-47f2-b783-730a79e403ed" />
+
+---
+
+
+
+
+---
