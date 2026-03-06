@@ -3,7 +3,21 @@ from tkinter import messagebox
 import random
 import string
 
-# ---------------- Password Generation Function ---------------- #
+# -------- Hover Effects -------- #
+def hover_generate(e):
+    generate_button["bg"] = "#1ABC9C"
+
+def leave_generate(e):
+    generate_button["bg"] = "#16A085"
+
+def hover_copy(e):
+    copy_button["bg"] = "#2980B9"
+
+def leave_copy(e):
+    copy_button["bg"] = "#3498DB"
+
+
+# -------- Password Generator -------- #
 def generate_password():
     length = length_slider.get()
     include_numbers = numbers_var.get()
@@ -17,14 +31,15 @@ def generate_password():
         characters += string.punctuation
 
     if length < 4:
-        messagebox.showerror("Error", "Password length must be at least 4.")
+        messagebox.showerror("Error", "Password length must be at least 4")
         return
 
     password = ''.join(random.choice(characters) for _ in range(length))
     password_entry.delete(0, tk.END)
     password_entry.insert(0, password)
 
-# ---------------- Copy to Clipboard ---------------- #
+
+# -------- Copy Password -------- #
 def copy_to_clipboard():
     password = password_entry.get()
     if password:
@@ -34,98 +49,115 @@ def copy_to_clipboard():
     else:
         messagebox.showwarning("Warning", "Generate password first!")
 
-# ---------------- Main Window ---------------- #
+
+# -------- Main Window -------- #
 root = tk.Tk()
 root.title("Advanced Password Generator")
-root.geometry("450x500")
-root.configure(bg="#F4F6F7")
+root.geometry("450x520")
+root.configure(bg="#2C3E50")
 root.resizable(False, False)
 
-# ---------------- Title ---------------- #
-title_label = tk.Label(
+# -------- Title -------- #
+title = tk.Label(
     root,
     text="Password Generator",
-    font=("Helvetica", 20, "bold"),
-    bg="#F4F6F7",
-    fg="#2C3E50"
+    font=("Segoe UI", 22, "bold"),
+    bg="#2C3E50",
+    fg="white"
 )
-title_label.pack(pady=20)
+title.pack(pady=25)
 
-# ---------------- Password Field ---------------- #
+# -------- Card Frame -------- #
+frame = tk.Frame(root, bg="#34495E", padx=25, pady=25)
+frame.pack(pady=10)
+
+# -------- Password Field -------- #
 password_entry = tk.Entry(
-    root,
-    font=("Helvetica", 14),
-    width=25,
-    bd=2,
-    relief="groove",
-    justify="center"
+    frame,
+    font=("Segoe UI", 14),
+    width=24,
+    justify="center",
+    bd=2
 )
-password_entry.pack(pady=15)
+password_entry.pack(pady=10)
 
-# ---------------- Length Slider ---------------- #
+# -------- Length -------- #
 length_label = tk.Label(
-    root,
-    text="Select Password Length:",
-    font=("Helvetica", 12),
-    bg="#F4F6F7"
+    frame,
+    text="Select Password Length",
+    font=("Segoe UI", 11),
+    bg="#34495E",
+    fg="white"
 )
 length_label.pack()
 
 length_slider = tk.Scale(
-    root,
+    frame,
     from_=4,
     to=32,
     orient="horizontal",
     length=250,
-    bg="#F4F6F7"
+    bg="#34495E",
+    fg="white",
+    highlightthickness=0
 )
 length_slider.set(12)
 length_slider.pack(pady=10)
 
-# ---------------- Options ---------------- #
+# -------- Options -------- #
 numbers_var = tk.BooleanVar()
 symbols_var = tk.BooleanVar()
 
 numbers_check = tk.Checkbutton(
-    root,
+    frame,
     text="Include Numbers",
     variable=numbers_var,
-    bg="#F4F6F7",
-    font=("Helvetica", 11)
+    font=("Segoe UI", 11),
+    bg="#34495E",
+    fg="white",
+    selectcolor="#34495E"
 )
-numbers_check.pack()
+numbers_check.pack(anchor="w")
 
 symbols_check = tk.Checkbutton(
-    root,
+    frame,
     text="Include Symbols",
     variable=symbols_var,
-    bg="#F4F6F7",
-    font=("Helvetica", 11)
+    font=("Segoe UI", 11),
+    bg="#34495E",
+    fg="white",
+    selectcolor="#34495E"
 )
-symbols_check.pack()
+symbols_check.pack(anchor="w")
 
-# ---------------- Buttons ---------------- #
+# -------- Buttons -------- #
 generate_button = tk.Button(
     root,
     text="Generate Password",
-    font=("Helvetica", 12, "bold"),
-    bg="#3498DB",
+    font=("Segoe UI", 12, "bold"),
+    bg="#16A085",
     fg="white",
-    width=18,
+    width=20,
     command=generate_password
 )
 generate_button.pack(pady=20)
 
+generate_button.bind("<Enter>", hover_generate)
+generate_button.bind("<Leave>", leave_generate)
+
 copy_button = tk.Button(
     root,
     text="Copy to Clipboard",
-    font=("Helvetica", 12, "bold"),
-    bg="#2ECC71",
+    font=("Segoe UI", 12, "bold"),
+    bg="#3498DB",
     fg="white",
-    width=18,
+    width=20,
     command=copy_to_clipboard
 )
 copy_button.pack()
 
-# ---------------- Run App ---------------- #
+copy_button.bind("<Enter>", hover_copy)
+copy_button.bind("<Leave>", leave_copy)
+
+# -------- Run App -------- #
 root.mainloop()
